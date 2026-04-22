@@ -1,0 +1,1632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>CareerConnect — CUNY</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',system-ui,sans-serif;background:#f0ede8;color:#1c1a17;font-size:14px}
+:root{
+  --bg1:#fff;--bg2:#f0ede8;--bg3:#e8e4dc;
+  --t1:#1c1a17;--t2:#6b6760;--t3:#9b9790;
+  --blue:#185FA5;--blue-lt:#E6F1FB;--blue-dk:#0C447C;
+  --navy:#003B71;--navy-dk:#002255;
+  --green:#3B6D11;--green-lt:#EAF3DE;
+  --amber:#854F0B;--amber-lt:#FAEEDA;
+  --red:#c0392b;--red-lt:#fef2f2;
+  --brd:rgba(0,0,0,0.11);--brd2:rgba(0,0,0,0.2);
+  --r1:8px;--r2:12px;--r3:16px;
+  --sh:0 2px 8px rgba(0,0,0,.08);
+  --sh-lg:0 8px 32px rgba(0,0,0,.14);
+  --sh-xl:0 20px 60px rgba(0,0,0,.22);
+}
+::-webkit-scrollbar{width:5px;height:5px}
+::-webkit-scrollbar-thumb{background:#ccc;border-radius:4px}
+.hidden{display:none!important}
+
+/* ── badges ── */
+.badge{display:inline-flex;align-items:center;padding:2px 9px;border-radius:20px;font-size:11px;font-weight:500}
+.bg{background:var(--green-lt);color:var(--green)}
+.bb{background:var(--blue-lt);color:var(--blue)}
+.ba{background:var(--amber-lt);color:var(--amber)}
+.bgr{background:var(--bg3);color:var(--t2);border:.5px solid var(--brd)}
+.br{background:var(--red-lt);color:var(--red)}
+.bn{background:#e6eef5;color:var(--navy)}
+
+/* ── buttons ── */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:5px;padding:8px 16px;font-size:13px;font-family:inherit;font-weight:500;border-radius:var(--r1);cursor:pointer;border:.5px solid var(--brd2);background:transparent;color:var(--t1);white-space:nowrap;transition:all .15s}
+.btn:hover{background:var(--bg3)}
+.bp{background:var(--blue);color:#fff;border-color:var(--blue)}.bp:hover{background:var(--blue-dk)}
+.bna{background:var(--navy);color:#fff;border-color:var(--navy)}.bna:hover{background:var(--navy-dk)}
+.bsm{padding:5px 12px;font-size:12px}.bxs{padding:3px 9px;font-size:11px}
+.bdng{background:var(--red-lt);color:var(--red);border-color:#fca5a5}.bdng:hover{background:#fee2e2}
+.bgh{border-color:transparent;color:var(--t2)}.bgh:hover{background:var(--bg3);color:var(--t1)}
+.bfw{width:100%}
+
+/* ── forms ── */
+.fg{margin-bottom:14px}
+.fl{display:block;font-size:12px;font-weight:600;color:var(--t2);margin-bottom:5px;letter-spacing:.02em}
+.fi,.fs,.ft{width:100%;padding:9px 12px;font-size:13px;font-family:inherit;border:.5px solid var(--brd2);border-radius:var(--r1);background:var(--bg1);color:var(--t1);transition:border-color .15s,box-shadow .15s}
+.fi:focus,.fs:focus,.ft:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(24,95,165,.12)}
+.fs{cursor:pointer}.ft{resize:vertical;min-height:80px;line-height:1.5}
+.fg2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.ferr{font-size:11px;color:var(--red);margin-top:3px}
+
+/* ── layout helpers ── */
+.card{background:var(--bg1);border:.5px solid var(--brd);border-radius:var(--r2);padding:18px;margin-bottom:16px}
+.sh{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.st{font-size:15px;font-weight:600}
+.gd2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:18px}
+.gd3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:18px}
+.gd4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:18px}
+.frow{display:flex;align-items:center;gap:8px}
+.sc{background:var(--bg1);border:.5px solid var(--brd);border-radius:var(--r1);padding:14px}
+.sc .lbl{font-size:11px;color:var(--t2);margin-bottom:3px}
+.sc .val{font-size:22px;font-weight:700}
+.sc .sub{font-size:10px;color:var(--t3);margin-top:2px}
+.tbox{background:var(--bg1);border:.5px solid var(--brd);border-radius:var(--r2);overflow:hidden;margin-bottom:16px}
+.th{background:var(--bg2);padding:9px 16px;display:grid;gap:10px;font-size:11px;font-weight:600;color:var(--t2);letter-spacing:.04em;text-transform:uppercase}
+.tr{padding:12px 16px;display:grid;gap:10px;font-size:13px;border-top:.5px solid var(--brd);align-items:center;transition:background .1s}
+.tr:hover{background:var(--bg2)}
+.tag{padding:3px 10px;border-radius:20px;font-size:12px;background:var(--bg3);color:var(--t2);border:.5px solid var(--brd)}
+.tagb{background:var(--blue-lt);color:var(--blue)}
+
+/* ── topbar ── */
+#topbar{background:var(--bg1);border-bottom:.5px solid var(--brd);padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:52px;position:sticky;top:0;z-index:100}
+.logo{display:flex;align-items:center;gap:9px}
+.logo-ic{width:28px;height:28px;background:var(--blue);border-radius:6px;display:flex;align-items:center;justify-content:center}
+.logo-ic svg{width:15px;height:15px;fill:#fff}
+.logo-tx{font-size:15px;font-weight:700;font-family:'DM Serif Display',serif}
+.logo-tx span{color:var(--blue)}
+.sso-badge{display:flex;align-items:center;gap:4px;padding:3px 9px;background:var(--blue-lt);border-radius:20px;border:.5px solid rgba(24,95,165,.2)}
+.sso-dot{width:5px;height:5px;background:var(--green);border-radius:50%}
+.uchip{display:flex;align-items:center;gap:6px;padding:3px 10px 3px 3px;border:.5px solid var(--brd);border-radius:20px;background:var(--bg2)}
+.uca{width:24px;height:24px;border-radius:50%;background:var(--blue);color:#fff;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center}
+
+/* ── nav tabs ── */
+.ntabs{display:flex;gap:3px;margin-bottom:20px}
+.nb{padding:6px 14px;font-size:13px;border:.5px solid transparent;border-radius:var(--r1);cursor:pointer;background:transparent;color:var(--t2);font-family:inherit;font-weight:500;transition:all .15s}
+.nb:hover{background:var(--bg3);color:var(--t1)}
+.nb.active{background:var(--bg3);border-color:var(--brd2);color:var(--t1);font-weight:600}
+
+/* ── profile card ── */
+.pc{background:var(--bg1);border:.5px solid var(--brd);border-radius:var(--r2);padding:20px;display:flex;gap:18px;margin-bottom:18px;align-items:flex-start}
+.av{width:54px;height:54px;border-radius:50%;background:var(--blue-lt);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700;color:var(--blue);flex-shrink:0}
+.pname{font-size:18px;font-weight:700;margin-bottom:3px}
+.pmeta{font-size:12px;color:var(--t2);margin-bottom:10px;line-height:1.5}
+.ptags{display:flex;gap:5px;flex-wrap:wrap}
+.pact{display:flex;gap:7px;flex-direction:column;align-items:flex-end}
+
+/* ── job cards ── */
+.jc{background:var(--bg1);border:.5px solid var(--brd);border-radius:var(--r2);padding:16px;margin-bottom:10px;display:flex;gap:14px;align-items:flex-start;transition:box-shadow .15s,transform .15s}
+.jc:hover{box-shadow:var(--sh);transform:translateY(-1px)}
+.clo{width:40px;height:40px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0}
+.jt{font-size:14px;font-weight:600;margin-bottom:2px}
+.jco{font-size:12px;color:var(--t2);margin-bottom:8px}
+.jtags{display:flex;gap:5px;flex-wrap:wrap}
+.jact{margin-left:auto;display:flex;flex-direction:column;gap:5px;align-items:flex-end}
+.ddl{font-size:10px;color:var(--t3)}
+
+/* ── file items ── */
+.fi-item{display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--bg2);border-radius:var(--r1);margin-bottom:8px;border:.5px solid var(--brd)}
+.fi-ic{width:32px;height:32px;background:var(--blue-lt);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--blue);font-weight:700;flex-shrink:0}
+
+/* ── upload zone ── */
+.uzone{border:1.5px dashed var(--brd2);border-radius:var(--r1);padding:28px;text-align:center;background:var(--bg2);cursor:pointer;transition:all .15s;display:block}
+.uzone:hover,.uzone.ov{border-color:var(--blue);background:var(--blue-lt)}
+.uzone input{display:none}
+
+/* ── modals ── */
+.ov{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:500;align-items:center;justify-content:center;backdrop-filter:blur(2px)}
+.ov.show{display:flex}
+.mo{background:var(--bg1);border-radius:var(--r3);padding:28px;width:520px;max-width:95vw;max-height:90vh;overflow-y:auto;box-shadow:var(--sh-xl);animation:mIn .2s ease-out}
+.mo-sm{width:420px}.mo-lg{width:700px}
+@keyframes mIn{from{opacity:0;transform:translateY(-14px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+.mh{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
+.mt{font-size:17px;font-weight:700}
+.mc{width:28px;height:28px;border-radius:50%;border:none;background:var(--bg3);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--t2);transition:all .15s}
+.mc:hover{background:#fee2e2;color:var(--red)}
+.mft{display:flex;gap:10px;justify-content:flex-end;margin-top:20px;padding-top:16px;border-top:.5px solid var(--brd)}
+.msec{margin-bottom:16px;padding-bottom:16px;border-bottom:.5px solid var(--brd)}
+.msec:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+
+/* ── auth ── */
+#auth-screen{min-height:100vh;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#0A2F5C 0%,#185FA5 55%,#2E86DE 100%);position:relative;overflow:hidden}
+#auth-screen::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E")}
+.acard{background:#fff;border-radius:20px;padding:36px 32px;width:440px;max-width:95vw;box-shadow:var(--sh-xl);position:relative;z-index:1}
+.atabs{display:flex;background:var(--bg2);border-radius:9px;padding:3px;gap:3px;margin-bottom:18px}
+.atab{flex:1;padding:7px;text-align:center;font-size:12px;font-weight:600;font-family:inherit;border:none;background:transparent;cursor:pointer;border-radius:7px;color:var(--t2);transition:all .15s}
+.atab.active{background:#fff;color:var(--t1);box-shadow:0 1px 4px rgba(0,0,0,.1)}
+.ropt{padding:9px 5px;border:.5px solid var(--brd2);border-radius:var(--r1);cursor:pointer;text-align:center;font-size:11px;font-weight:500;color:var(--t2);background:transparent;transition:all .15s;font-family:inherit}
+.ropt:hover{background:var(--bg2)}
+.ropt.sel{border-color:var(--blue);background:var(--blue-lt);color:var(--blue);font-weight:600}
+.ps-bar{height:4px;border-radius:2px;margin-top:6px;transition:all .3s;background:#eee;width:0}
+.ps0{width:0;background:#eee}.ps1{width:25%;background:#e74c3c}.ps2{width:50%;background:#e67e22}.ps3{width:75%;background:#f1c40f}.ps4{width:100%;background:#2ecc71}
+
+/* ── sso loading ── */
+#sso-load{display:none;position:fixed;inset:0;z-index:1500;background:linear-gradient(135deg,#0A2F5C,#185FA5);align-items:center;justify-content:center;flex-direction:column;gap:14px}
+#sso-load.show{display:flex}
+.spin{width:40px;height:40px;border:3px solid rgba(255,255,255,.2);border-top-color:#fff;border-radius:50%;animation:sp .75s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+
+/* ── toast ── */
+#toasts{position:fixed;bottom:24px;right:24px;z-index:2000;display:flex;flex-direction:column;gap:8px}
+.toast{background:var(--t1);color:#fff;padding:10px 16px;border-radius:var(--r1);font-size:13px;font-weight:500;box-shadow:var(--sh-lg);animation:tIn .25s ease-out;display:flex;align-items:center;gap:8px;min-width:240px;max-width:320px}
+.ts{background:#1a3a1a;border-left:3px solid #2ecc71}
+.te{background:#3a1a1a;border-left:3px solid var(--red)}
+.ti{background:#1a2a3a;border-left:3px solid var(--blue)}
+@keyframes tIn{from{opacity:0;transform:translateX(20px)}to{opacity:1;transform:translateX(0)}}
+
+/* ── confirm ── */
+#conf-ov{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:1200;align-items:center;justify-content:center;backdrop-filter:blur(2px)}
+#conf-ov.show{display:flex}
+.cbox{background:#fff;border-radius:var(--r2);padding:24px;width:360px;max-width:95vw;box-shadow:var(--sh-xl);text-align:center;animation:mIn .2s ease-out}
+
+/* ── db status ── */
+#db-status{position:fixed;top:60px;right:16px;z-index:200;font-size:11px;padding:4px 10px;border-radius:20px;font-weight:500;transition:all .3s}
+.db-on{background:#EAF3DE;color:#3B6D11;border:.5px solid #c3e0a3}
+.db-off{background:#FAEEDA;color:#854F0B;border:.5px solid #e4c89a}
+
+/* ── demo banner ── */
+#demo-bar{background:var(--amber-lt);border-bottom:.5px solid #e4c89a;padding:6px 24px;display:flex;align-items:center;justify-content:space-between}
+.drb{padding:3px 10px;font-size:11px;border-radius:20px;border:.5px solid #e4c89a;cursor:pointer;background:transparent;color:var(--amber);font-family:inherit}
+.drb.active,.drb:hover{background:var(--amber);color:#fff;border-color:var(--amber)}
+
+/* ── content ── */
+.cont{padding:24px;max-width:1100px}
+.colo{color:var(--blue)}
+
+/* ── password strength text ── */
+.ps-lbl{font-size:10px;color:var(--t3);margin-top:3px}
+
+/* ── apply checklist ── */
+.achk{display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--bg2);border-radius:var(--r1);border:.5px solid var(--brd);margin-bottom:8px}
+</style>
+</head>
+<body>
+
+<!-- ── SSO LOADING ── -->
+<div id="sso-load">
+  <div style="text-align:center;margin-bottom:8px">
+    <div style="font-size:22px;font-weight:700;color:#fff;font-family:'DM Serif Display',serif">CareerConnect</div>
+    <div style="font-size:10px;color:rgba(255,255,255,.5);letter-spacing:.07em;text-transform:uppercase;margin-top:2px">CUNY Career Development</div>
+  </div>
+  <div class="spin"></div>
+  <div style="color:#fff;font-size:14px;font-weight:600" id="sso-msg">Connecting to CUNYfirst…</div>
+  <div style="color:rgba(255,255,255,.6);font-size:11px" id="sso-sub">Verifying credentials</div>
+</div>
+
+<!-- ── TOASTS ── -->
+<div id="toasts"></div>
+
+<!-- ── DB STATUS INDICATOR ── -->
+<div id="db-status" class="db-off hidden">⚡ DB Offline</div>
+
+<!-- ── CONFIRM DIALOG ── -->
+<div id="conf-ov">
+  <div class="cbox">
+    <div style="font-size:32px;margin-bottom:10px" id="conf-icon">⚠️</div>
+    <div style="font-size:16px;font-weight:700;margin-bottom:6px" id="conf-title">Are you sure?</div>
+    <div style="font-size:13px;color:var(--t2);margin-bottom:20px;line-height:1.5" id="conf-msg"></div>
+    <div style="display:flex;gap:10px;justify-content:center">
+      <button class="btn bsm" onclick="confNo()">Cancel</button>
+      <button class="btn bsm bp" id="conf-ok" onclick="confYes()">Confirm</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ AUTH SCREEN ══════════════ -->
+<div id="auth-screen">
+  <div class="acard">
+    <div style="font-size:10px;font-weight:700;color:var(--blue);text-align:center;letter-spacing:.07em;text-transform:uppercase;margin-bottom:7px">CUNY Career Development Office</div>
+    <div style="display:flex;align-items:center;gap:9px;justify-content:center;margin-bottom:5px">
+      <div style="width:34px;height:34px;background:var(--blue);border-radius:7px;display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 16 16" style="width:18px;height:18px;fill:#fff"><path d="M8 1L2 4v4c0 3.3 2.5 6.4 6 7 3.5-.6 6-3.7 6-7V4L8 1zm-1 9.4L4.6 8l1.4-1.4L7 8.6l3-3L11.4 7 7 10.4z"/></svg></div>
+      <div style="font-size:20px;font-weight:700;font-family:'DM Serif Display',serif"><span style="color:var(--blue)">Career</span>Connect</div>
+    </div>
+    <div style="text-align:center;font-size:12px;color:var(--t2);margin-bottom:22px">Internships &amp; jobs for CUNY students</div>
+
+    <!-- SSO button -->
+    <button style="width:100%;padding:12px 16px;border-radius:9px;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;font-size:14px;font-weight:600;font-family:inherit;background:var(--navy);color:#fff;margin-bottom:8px;transition:all .18s" onmouseover="this.style.background='#002255'" onmouseout="this.style.background='var(--navy)'" onclick="ssoLogin()">
+      <div style="width:22px;height:22px;border-radius:4px;background:#fff;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:var(--navy)">CF</div>
+      Sign in with CUNYfirst SSO
+    </button>
+    <div style="font-size:11px;color:var(--t2);text-align:center;margin-bottom:14px">Uses your CUNYfirst credentials · Secure SAML 2.0 SSO</div>
+
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
+      <div style="flex:1;height:.5px;background:var(--brd)"></div>
+      <span style="font-size:11px;color:var(--t2)">or continue with email</span>
+      <div style="flex:1;height:.5px;background:var(--brd)"></div>
+    </div>
+
+    <!-- Login / Register tabs -->
+    <div class="atabs">
+      <button class="atab active" id="atab-login" onclick="switchATab('login')">Sign In</button>
+      <button class="atab" id="atab-reg" onclick="switchATab('register')">Create Account</button>
+    </div>
+
+    <!-- LOGIN panel -->
+    <div id="panel-login">
+      <div class="fg">
+        <label class="fl">I am a…</label>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-bottom:4px">
+          <button class="ropt sel" id="lr-student" onclick="setLR('student')"><span style="font-size:17px;display:block;margin-bottom:3px">🎓</span>Student</button>
+          <button class="ropt" id="lr-admin" onclick="setLR('admin')"><span style="font-size:17px;display:block;margin-bottom:3px">🏛️</span>Career Office</button>
+          <button class="ropt" id="lr-company" onclick="setLR('company')"><span style="font-size:17px;display:block;margin-bottom:3px">🏢</span>Employer</button>
+        </div>
+      </div>
+      <div class="fg"><label class="fl">Email</label><input class="fi" id="l-email" type="email" placeholder="yourname@cuny.edu"></div>
+      <div class="fg"><label class="fl">Password</label><input class="fi" id="l-pass" type="password" placeholder="••••••••"></div>
+      <button class="btn bp bfw" style="padding:11px;font-size:14px;font-weight:600;border-radius:9px;margin-top:2px" onclick="doLogin()">Sign in →</button>
+      <div style="margin-top:10px;text-align:center;font-size:11px">
+        <a style="color:var(--blue);cursor:pointer" onclick="openM('m-forgot')">Forgot password?</a>
+        &nbsp;·&nbsp;
+        <span style="color:var(--t3);font-size:10px">Demo: alex@ccny.cuny.edu / password123</span>
+      </div>
+    </div>
+
+    <!-- REGISTER panel -->
+    <div id="panel-reg" class="hidden">
+      <div class="fg">
+        <label class="fl">I am registering as…</label>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:7px">
+          <button class="ropt sel" id="rr-student" onclick="setRR('student')"><span style="font-size:17px;display:block;margin-bottom:3px">🎓</span>Student</button>
+          <button class="ropt" id="rr-admin" onclick="setRR('admin')"><span style="font-size:17px;display:block;margin-bottom:3px">🏛️</span>Career Office</button>
+          <button class="ropt" id="rr-company" onclick="setRR('company')"><span style="font-size:17px;display:block;margin-bottom:3px">🏢</span>Employer</button>
+        </div>
+      </div>
+      <div class="fg2">
+        <div class="fg"><label class="fl">First Name</label><input class="fi" id="r-fn" placeholder="Alex"></div>
+        <div class="fg"><label class="fl">Last Name</label><input class="fi" id="r-ln" placeholder="Johnson"></div>
+      </div>
+      <div class="fg"><label class="fl">Email</label><input class="fi" id="r-email" type="email" placeholder="yourname@cuny.edu"></div>
+      <div id="r-student-f">
+        <div class="fg2">
+          <div class="fg"><label class="fl">CUNY College</label>
+            <select class="fs" id="r-college">
+              <option>City College (CCNY)</option><option>Baruch College</option><option>Brooklyn College</option>
+              <option>Hunter College</option><option>Queens College</option><option>John Jay College</option>
+              <option>Lehman College</option><option>College of Staten Island</option><option>York College</option>
+            </select>
+          </div>
+          <div class="fg"><label class="fl">Major</label><input class="fi" id="r-major" placeholder="Computer Science"></div>
+        </div>
+        <div class="fg2">
+          <div class="fg"><label class="fl">Year</label><select class="fs" id="r-year"><option>Freshman</option><option>Sophomore</option><option>Junior</option><option>Senior</option><option>Graduate</option></select></div>
+          <div class="fg"><label class="fl">CUNY Student ID</label><input class="fi" id="r-sid" placeholder="23456789"></div>
+        </div>
+      </div>
+      <div id="r-company-f" class="hidden">
+        <div class="fg"><label class="fl">Company Name</label><input class="fi" id="r-coname" placeholder="Acme Corp"></div>
+        <div class="fg"><label class="fl">Industry</label><select class="fs" id="r-industry"><option>Technology</option><option>Finance</option><option>Healthcare</option><option>Education</option><option>Government</option><option>Non-profit</option><option>Other</option></select></div>
+      </div>
+      <div class="fg">
+        <label class="fl">Password</label>
+        <input class="fi" id="r-pass" type="password" placeholder="Min. 8 characters" oninput="chkPW(this.value)">
+        <div class="ps-bar" id="ps-bar"></div>
+        <div class="ps-lbl" id="ps-lbl"></div>
+      </div>
+      <div class="fg"><label class="fl">Confirm Password</label><input class="fi" id="r-pass2" type="password" placeholder="Repeat password"></div>
+      <button class="btn bp bfw" style="padding:11px;font-size:14px;font-weight:600;border-radius:9px" onclick="doRegister()">Create Account →</button>
+    </div>
+
+    <div style="margin-top:14px;text-align:center;font-size:10px;color:#bbb">Protected by CUNY SSO · <a style="color:#7ab" href="#">Privacy Policy</a></div>
+  </div>
+</div>
+
+<!-- ══════════════ MAIN APP ══════════════ -->
+<div id="main-app" class="hidden">
+
+  <!-- demo banner -->
+  <div id="demo-bar">
+    <span style="font-size:11px;color:var(--amber);font-weight:500">🔧 Demo — switch role:</span>
+    <div style="display:flex;gap:4px">
+      <button class="drb active" id="dr-student" onclick="demoSwitch('student',this)">Student</button>
+      <button class="drb" id="dr-admin" onclick="demoSwitch('admin',this)">Career Office</button>
+      <button class="drb" id="dr-company" onclick="demoSwitch('company',this)">Employer</button>
+    </div>
+  </div>
+
+  <!-- topbar -->
+  <div id="topbar">
+    <div class="logo">
+      <div class="logo-ic"><svg viewBox="0 0 16 16"><path d="M8 1L2 4v4c0 3.3 2.5 6.4 6 7 3.5-.6 6-3.7 6-7V4L8 1zm-1 9.4L4.6 8l1.4-1.4L7 8.6l3-3L11.4 7 7 10.4z"/></svg></div>
+      <div class="logo-tx"><span>Career</span>Connect</div>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px">
+      <div class="sso-badge"><div class="sso-dot"></div><span style="font-size:10px;color:var(--blue);font-weight:600" id="sso-lbl">CUNYfirst SSO ✓</span></div>
+      <div class="uchip">
+        <div class="uca" id="tb-init">AJ</div>
+        <div><div style="font-size:12px;font-weight:600" id="tb-name">Alex Johnson</div><div style="font-size:10px;color:var(--t2)" id="tb-role">Student · CCNY</div></div>
+      </div>
+      <button class="btn bsm" style="border-radius:20px;font-size:11px" onclick="doLogout()">Sign out</button>
+    </div>
+  </div>
+
+  <!-- ── STUDENT VIEW ── -->
+  <div id="view-student" class="cont hidden">
+    <div class="ntabs">
+      <button class="nb active" data-view="sv-profile" onclick="swTab(this,'student')">My Profile</button>
+      <button class="nb" data-view="sv-resume" onclick="swTab(this,'student')">Resume & Docs</button>
+      <button class="nb" data-view="sv-jobs" onclick="swTab(this,'student')">Browse Jobs</button>
+      <button class="nb" data-view="sv-apps" onclick="swTab(this,'student')">Applications</button>
+    </div>
+
+    <div id="sv-profile">
+      <div class="pc">
+        <div class="av" id="s-av">AJ</div>
+        <div style="flex:1">
+          <div class="pname" id="s-name">Alex Johnson</div>
+          <div class="pmeta">Computer Science, Junior · GPA 3.7 · Expected May 2026 · <span class="colo">City College of New York</span></div>
+          <div class="ptags" id="s-tags">
+            <span class="tag tagb">Software Engineering</span><span class="tag tagb">Data Analysis</span>
+            <span class="tag">Python</span><span class="tag">React</span><span class="tag">SQL</span>
+          </div>
+        </div>
+        <div class="pact">
+          <button class="btn bp bsm" onclick="openM('m-edit-profile')">✏️ Edit Profile</button>
+          <button class="btn bsm" onclick="toast('Profile link copied!','s','🔗')">🔗 Share</button>
+        </div>
+      </div>
+      <div class="gd4">
+        <div class="sc"><div class="lbl">Profile views</div><div class="val">42</div><div class="sub">+8 this week</div></div>
+        <div class="sc"><div class="lbl">Applications</div><div class="val" id="s-app-ct">—</div><div class="sub">sent</div></div>
+        <div class="sc"><div class="lbl">Saved jobs</div><div class="val">12</div><div class="sub">3 closing soon</div></div>
+        <div class="sc"><div class="lbl">Resume strength</div><div class="val" id="s-rs">—</div><div class="sub">Upload more docs</div></div>
+      </div>
+      <div class="card">
+        <div class="sh"><span class="st">Recommended for you</span><button class="btn bgh bsm" onclick="gotoTab('sv-jobs','student')">See all jobs →</button></div>
+        <div id="s-rec-jobs"><div style="text-align:center;padding:20px;color:var(--t3);font-size:13px">Loading…</div></div>
+      </div>
+    </div>
+
+    <div id="sv-resume" class="hidden">
+      <div class="card">
+        <div class="sh"><span class="st">📄 My Resume</span></div>
+        <div id="s-resume-list"></div>
+        <label class="uzone" ondragover="dov(event)" ondragleave="dlv(event)" ondrop="ddf(event,'resume')">
+          <input type="file" accept=".pdf,.doc,.docx" onchange="handleUp(event,'resume')">
+          <div style="font-size:28px;margin-bottom:8px">📄</div>
+          <div style="font-size:13px;color:var(--t2);margin-bottom:10px">Click to upload or drag &amp; drop your resume</div>
+          <div style="font-size:11px;color:var(--t3)">PDF or DOCX · Max 5 MB</div>
+        </label>
+      </div>
+      <div class="card">
+        <div class="sh"><span class="st">📁 Additional Documents</span><button class="btn bp bsm" onclick="document.getElementById('doc-inp').click()">+ Add Document</button></div>
+        <input type="file" id="doc-inp" style="display:none" accept=".pdf,.doc,.docx,.png,.jpg" onchange="handleUp(event,'doc')">
+        <div id="s-doc-list"></div>
+        <p id="s-doc-empty" style="text-align:center;padding:14px;font-size:12px;color:var(--t3)">No additional documents uploaded yet.</p>
+      </div>
+    </div>
+
+    <div id="sv-jobs" class="hidden">
+      <div style="display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap">
+        <input class="fi" style="flex:1;min-width:180px" placeholder="🔍 Search jobs, companies, skills…" oninput="filterJobs(this.value)">
+        <select class="fs" style="width:130px" onchange="filterJobs()"><option value="">All types</option><option>Internship</option><option>Full-time</option><option>Part-time</option></select>
+        <select class="fs" style="width:140px" onchange="filterJobs()"><option value="">All fields</option><option>Engineering</option><option>Business</option><option>Design</option><option>Finance</option><option>Data Science</option></select>
+      </div>
+      <div id="s-jobs-list"><div style="text-align:center;padding:30px;color:var(--t3)">Loading…</div></div>
+    </div>
+
+    <div id="sv-apps" class="hidden">
+      <div class="tbox">
+        <div class="th" style="grid-template-columns:2fr 1.5fr 0.8fr 1fr 80px"><span>Position</span><span>Company</span><span>Applied</span><span>Status</span><span></span></div>
+        <div id="s-apps-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── ADMIN VIEW ── -->
+  <div id="view-admin" class="cont hidden">
+    <div class="ntabs">
+      <button class="nb active" data-view="av-overview" onclick="swTab(this,'admin')">Overview</button>
+      <button class="nb" data-view="av-companies" onclick="swTab(this,'admin')">Companies</button>
+      <button class="nb" data-view="av-jobs" onclick="swTab(this,'admin')">Job Postings</button>
+      <button class="nb" data-view="av-students" onclick="swTab(this,'admin')">Students</button>
+    </div>
+
+    <div id="av-overview">
+      <div class="gd4" id="a-stats-grid">
+        <div class="sc"><div class="lbl">Active Students</div><div class="val" id="a-st-students">—</div></div>
+        <div class="sc"><div class="lbl">Approved Companies</div><div class="val" id="a-st-cos">—</div></div>
+        <div class="sc"><div class="lbl">Open Positions</div><div class="val" id="a-st-jobs">—</div></div>
+        <div class="sc"><div class="lbl">Applications</div><div class="val" id="a-st-apps">—</div></div>
+      </div>
+      <div class="card">
+        <div class="sh"><span class="st">⏳ Pending Company Approvals</span><button class="btn bgh bsm" onclick="gotoTab('av-companies','admin')">View all →</button></div>
+        <div id="a-pending"></div>
+      </div>
+    </div>
+
+    <div id="av-companies" class="hidden">
+      <div class="frow" style="margin-bottom:16px">
+        <input class="fi" style="flex:1" placeholder="🔍 Search companies…" oninput="filterAdminCos(this.value)">
+        <button class="btn bp bsm" onclick="openM('m-add-co')">+ Add Company</button>
+      </div>
+      <div class="tbox">
+        <div class="th" style="grid-template-columns:2fr 1.2fr 0.8fr 0.8fr 130px"><span>Company</span><span>Industry</span><span>Jobs</span><span>Status</span><span>Actions</span></div>
+        <div id="a-cos-list"></div>
+      </div>
+    </div>
+
+    <div id="av-jobs" class="hidden">
+      <div class="frow" style="margin-bottom:16px">
+        <input class="fi" style="flex:1" placeholder="🔍 Search postings…" oninput="filterAdminJobs(this.value)">
+        <button class="btn bp bsm" onclick="openPostJobAdmin()">+ Post Job</button>
+      </div>
+      <div class="tbox">
+        <div class="th" style="grid-template-columns:2fr 1.2fr 0.8fr 0.8fr 120px"><span>Title</span><span>Company</span><span>Deadline</span><span>Status</span><span>Actions</span></div>
+        <div id="a-jobs-list"></div>
+      </div>
+    </div>
+
+    <div id="av-students" class="hidden">
+      <div class="tbox">
+        <div class="th" style="grid-template-columns:2fr 1.5fr 0.8fr 0.6fr 70px"><span>Student</span><span>Major</span><span>Year</span><span>Apps</span><span></span></div>
+        <div id="a-students-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── COMPANY VIEW ── -->
+  <div id="view-company" class="cont hidden">
+    <div class="ntabs">
+      <button class="nb active" data-view="cv-dash" onclick="swTab(this,'company')">Dashboard</button>
+      <button class="nb" data-view="cv-post" onclick="swTab(this,'company')">Post a Job</button>
+      <button class="nb" data-view="cv-apps" onclick="swTab(this,'company')">Applicants</button>
+      <button class="nb" data-view="cv-profile" onclick="swTab(this,'company')">Company Profile</button>
+    </div>
+
+    <div id="cv-dash">
+      <div class="pc">
+        <div class="av" style="border-radius:10px" id="co-av">MS</div>
+        <div style="flex:1">
+          <div class="pname" id="co-name">Microsoft Corporation</div>
+          <div class="pmeta" id="co-meta">Software · Seattle, WA · Approved recruiter</div>
+          <span class="badge bg">✓ Approved Recruiter</span>
+        </div>
+        <div><button class="btn bsm" onclick="gotoTab('cv-profile','company')">Edit Profile</button></div>
+      </div>
+      <div class="gd3">
+        <div class="sc"><div class="lbl">Active Postings</div><div class="val" id="co-st-post">—</div></div>
+        <div class="sc"><div class="lbl">Total Applicants</div><div class="val" id="co-st-apps">—</div></div>
+        <div class="sc"><div class="lbl">Positions Filled</div><div class="val">4</div></div>
+      </div>
+      <div class="card">
+        <div class="sh"><span class="st">Recent Applicants</span></div>
+        <div id="co-recent"></div>
+      </div>
+    </div>
+
+    <div id="cv-post" class="hidden">
+      <div class="card">
+        <div class="sh"><span class="st">📋 New Job Posting</span><span class="badge ba">Requires Admin Approval</span></div>
+        <div class="fg2">
+          <div class="fg"><label class="fl">Job Title *</label><input class="fi" id="cj-title" placeholder="e.g. Software Engineering Intern"></div>
+          <div class="fg"><label class="fl">Job Type *</label><select class="fs" id="cj-type"><option>Internship</option><option>Full-time</option><option>Part-time</option><option>Co-op</option></select></div>
+        </div>
+        <div class="fg2">
+          <div class="fg"><label class="fl">Location *</label><input class="fi" id="cj-loc" placeholder="City, State or Remote"></div>
+          <div class="fg"><label class="fl">Salary / Stipend</label><input class="fi" id="cj-sal" placeholder="e.g. $20/hr"></div>
+        </div>
+        <div class="fg2">
+          <div class="fg"><label class="fl">Deadline *</label><input class="fi" id="cj-dl" type="date"></div>
+          <div class="fg"><label class="fl">Openings</label><input class="fi" id="cj-open" type="number" value="1" min="1"></div>
+        </div>
+        <div class="fg"><label class="fl">Description *</label><textarea class="ft" id="cj-desc" rows="4" placeholder="Describe the role, responsibilities, and what students will learn…"></textarea></div>
+        <div class="fg"><label class="fl">Requirements</label><textarea class="ft" id="cj-req" rows="2" placeholder="GPA, experience, coursework…"></textarea></div>
+        <div class="fg"><label class="fl">Required Skills (comma separated)</label><input class="fi" id="cj-skills" placeholder="Python, React, SQL"></div>
+        <div style="display:flex;gap:10px;margin-top:4px">
+          <button class="btn bp" onclick="submitCoJob()">📤 Submit for Approval</button>
+          <button class="btn" onclick="toast('Draft saved!','s','💾')">💾 Save Draft</button>
+          <button class="btn bgh" onclick="clearCoJobForm()">Clear</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="cv-apps" class="hidden">
+      <div class="tbox">
+        <div class="th" style="grid-template-columns:2fr 1.5fr 0.8fr 1fr 90px"><span>Student</span><span>Position</span><span>Applied</span><span>Status</span><span>Actions</span></div>
+        <div id="co-apps-list"></div>
+      </div>
+    </div>
+
+    <div id="cv-profile" class="hidden">
+      <div class="card">
+        <div class="sh"><span class="st">🏢 Company Profile</span></div>
+        <div class="fg2">
+          <div class="fg"><label class="fl">Company Name</label><input class="fi" id="cp-name" value="Microsoft Corporation"></div>
+          <div class="fg"><label class="fl">Industry</label><select class="fs" id="cp-ind"><option>Software</option><option>Technology</option><option>Finance</option><option>Healthcare</option><option>E-Commerce</option><option>Fintech</option><option>Energy</option><option>Other</option></select></div>
+        </div>
+        <div class="fg2">
+          <div class="fg"><label class="fl">Headquarters</label><input class="fi" id="cp-hq" value="Seattle, WA"></div>
+          <div class="fg"><label class="fl">Website</label><input class="fi" id="cp-web" value="https://microsoft.com" type="url"></div>
+        </div>
+        <div class="fg"><label class="fl">About</label><textarea class="ft" id="cp-about" rows="3">Microsoft Corporation is an American multinational technology company committed to recruiting CUNY talent.</textarea></div>
+        <div class="fg"><label class="fl">Recruiter Email</label><input class="fi" id="cp-email" value="recruiting@microsoft.com" type="email"></div>
+        <button class="btn bp" onclick="saveCoProfile()">💾 Save Profile</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ MODALS ══════════════ -->
+
+<!-- APPLY -->
+<div class="ov" id="m-apply">
+  <div class="mo mo-sm">
+    <div class="mh"><div class="mt">Apply for Position</div><button class="mc" onclick="closeM('m-apply')">✕</button></div>
+    <div id="m-apply-info"></div>
+    <div id="m-apply-chk" style="margin-bottom:14px"></div>
+    <div class="fg"><label class="fl">Cover Letter (Optional)</label><textarea class="ft" id="m-apply-cl" rows="4" placeholder="Add a brief note…"></textarea></div>
+    <div class="mft"><button class="btn bsm" onclick="closeM('m-apply')">Cancel</button><button class="btn bp bsm" onclick="confirmApply()">✅ Confirm Application</button></div>
+  </div>
+</div>
+
+<!-- FILE UPLOAD -->
+<div class="ov" id="m-upload">
+  <div class="mo mo-sm">
+    <div class="mh"><div class="mt" id="m-up-title">Upload Document</div><button class="mc" onclick="closeM('m-upload')">✕</button></div>
+    <div id="m-up-preview" class="hidden">
+      <div class="fi-item" style="margin-bottom:14px">
+        <div class="fi-ic" id="m-up-icon">PDF</div>
+        <div style="flex:1"><div style="font-size:13px;font-weight:500" id="m-up-fname">file.pdf</div><div style="font-size:10px;color:var(--t3)" id="m-up-fsize">—</div></div>
+        <button class="btn bgh bxs" onclick="clearMUpload()">✕</button>
+      </div>
+    </div>
+    <label class="uzone" id="m-up-zone" ondragover="dov(event)" ondragleave="dlv(event)" ondrop="ddf(event,'modal')">
+      <input type="file" id="m-up-inp" accept=".pdf,.doc,.docx,.png,.jpg" onchange="handleMUpload(event)">
+      <div style="font-size:28px;margin-bottom:8px">📁</div>
+      <div style="font-size:13px;color:var(--t2);margin-bottom:8px">Click to browse or drag &amp; drop</div>
+      <div style="font-size:11px;color:var(--t3)">PDF, DOCX, PNG, JPG · Max 5 MB</div>
+    </label>
+    <div class="fg" style="margin-top:14px"><label class="fl">Document Type</label>
+      <select class="fs" id="m-up-type">
+        <option value="resume">Resume</option><option value="cover_letter">Cover Letter</option>
+        <option value="transcript">Transcript</option><option value="portfolio">Portfolio / Sample</option><option value="other">Other</option>
+      </select>
+    </div>
+    <div class="mft"><button class="btn bsm" onclick="closeM('m-upload')">Cancel</button><button class="btn bp bsm" onclick="finalizeUpload()">Upload Document</button></div>
+  </div>
+</div>
+
+<!-- EDIT PROFILE (student) -->
+<div class="ov" id="m-edit-profile">
+  <div class="mo">
+    <div class="mh"><div class="mt">✏️ Edit Profile</div><button class="mc" onclick="closeM('m-edit-profile')">✕</button></div>
+    <div class="fg2">
+      <div class="fg"><label class="fl">First Name</label><input class="fi" id="ep-fn" value="Alex"></div>
+      <div class="fg"><label class="fl">Last Name</label><input class="fi" id="ep-ln" value="Johnson"></div>
+    </div>
+    <div class="fg2">
+      <div class="fg"><label class="fl">Major</label><input class="fi" id="ep-major" value="Computer Science"></div>
+      <div class="fg"><label class="fl">Expected Graduation</label><input class="fi" id="ep-grad" value="May 2026"></div>
+    </div>
+    <div class="fg2">
+      <div class="fg"><label class="fl">GPA</label><input class="fi" id="ep-gpa" value="3.7" type="number" step="0.01" min="0" max="4"></div>
+      <div class="fg"><label class="fl">CUNY College</label>
+        <select class="fs" id="ep-college">
+          <option selected>City College (CCNY)</option><option>Baruch College</option><option>Brooklyn College</option><option>Hunter College</option><option>Queens College</option>
+        </select>
+      </div>
+    </div>
+    <div class="fg"><label class="fl">Skills (comma separated)</label><input class="fi" id="ep-skills" value="Python, React, SQL, Data Analysis, Software Engineering"></div>
+    <div class="fg"><label class="fl">Bio / Summary</label><textarea class="ft" id="ep-bio" rows="3">Junior CS student at CCNY passionate about software engineering and data analysis.</textarea></div>
+    <div class="mft"><button class="btn bsm" onclick="closeM('m-edit-profile')">Cancel</button><button class="btn bp bsm" onclick="saveProfile()">💾 Save Changes</button></div>
+  </div>
+</div>
+
+<!-- ADD COMPANY (admin) -->
+<div class="ov" id="m-add-co">
+  <div class="mo mo-lg">
+    <div class="mh"><div class="mt">🏢 Add New Company</div><button class="mc" onclick="closeM('m-add-co')">✕</button></div>
+    <div class="fg2">
+      <div class="fg"><label class="fl">Company Name *</label><input class="fi" id="ac-name" placeholder="Acme Corp"></div>
+      <div class="fg"><label class="fl">Industry *</label><select class="fs" id="ac-ind"><option>Technology</option><option>Finance</option><option>Healthcare</option><option>Education</option><option>Government</option><option>Non-profit</option><option>E-Commerce</option><option>Fintech</option><option>Energy</option><option>Other</option></select></div>
+    </div>
+    <div class="fg2">
+      <div class="fg"><label class="fl">Headquarters</label><input class="fi" id="ac-hq" placeholder="New York, NY"></div>
+      <div class="fg"><label class="fl">Website</label><input class="fi" id="ac-web" placeholder="https://company.com" type="url"></div>
+    </div>
+    <div class="fg"><label class="fl">About</label><textarea class="ft" id="ac-about" rows="2" placeholder="Brief company description…"></textarea></div>
+    <div style="font-size:12px;font-weight:700;color:var(--t1);margin-bottom:10px;padding-top:6px;border-top:.5px solid var(--brd)">Recruiter Contact</div>
+    <div class="fg2">
+      <div class="fg"><label class="fl">Contact Name *</label><input class="fi" id="ac-cname" placeholder="Jane Smith"></div>
+      <div class="fg"><label class="fl">Contact Email *</label><input class="fi" id="ac-cemail" placeholder="jane@company.com" type="email"></div>
+    </div>
+    <div class="fg"><label class="fl">Approval Status</label><select class="fs" id="ac-status"><option value="approved">Approved</option><option value="pending">Pending Review</option></select></div>
+    <div class="mft"><button class="btn bsm" onclick="closeM('m-add-co')">Cancel</button><button class="btn bp bsm" onclick="addCompany()">✅ Add Company</button></div>
+  </div>
+</div>
+
+<!-- EDIT JOB (admin) -->
+<div class="ov" id="m-edit-job">
+  <div class="mo mo-lg">
+    <div class="mh"><div class="mt">✏️ Edit Job Posting</div><button class="mc" onclick="closeM('m-edit-job')">✕</button></div>
+    <input type="hidden" id="ej-id">
+    <div class="fg2">
+      <div class="fg"><label class="fl">Job Title</label><input class="fi" id="ej-title"></div>
+      <div class="fg"><label class="fl">Company</label><input class="fi" id="ej-co" readonly style="background:var(--bg2)"></div>
+    </div>
+    <div class="fg2">
+      <div class="fg"><label class="fl">Type</label><select class="fs" id="ej-type"><option>Internship</option><option>Full-time</option><option>Part-time</option><option>Co-op</option></select></div>
+      <div class="fg"><label class="fl">Location</label><input class="fi" id="ej-loc"></div>
+    </div>
+    <div class="fg2">
+      <div class="fg"><label class="fl">Deadline</label><input class="fi" id="ej-dl"></div>
+      <div class="fg"><label class="fl">Status</label><select class="fs" id="ej-status"><option value="active">Active</option><option value="closing">Closing Soon</option><option value="closed">Closed</option><option value="pending">Pending Approval</option></select></div>
+    </div>
+    <div class="fg"><label class="fl">Description</label><textarea class="ft" id="ej-desc" rows="3"></textarea></div>
+    <div class="fg"><label class="fl">Skills (comma separated)</label><input class="fi" id="ej-skills"></div>
+    <div class="mft">
+      <button class="btn bsm bdng" onclick="deleteJob(document.getElementById('ej-id').value)">🗑 Delete</button>
+      <button class="btn bsm" onclick="closeM('m-edit-job')">Cancel</button>
+      <button class="btn bp bsm" onclick="saveJobEdit()">💾 Save Changes</button>
+    </div>
+  </div>
+</div>
+
+<!-- POST JOB ADMIN -->
+<div class="ov" id="m-post-job">
+  <div class="mo mo-lg">
+    <div class="mh"><div class="mt">📋 Post a Job</div><button class="mc" onclick="closeM('m-post-job')">✕</button></div>
+    <div class="fg"><label class="fl">Company *</label><select class="fs" id="pj-co"></select></div>
+    <div class="fg2">
+      <div class="fg"><label class="fl">Job Title *</label><input class="fi" id="pj-title" placeholder="e.g. Software Engineering Intern"></div>
+      <div class="fg"><label class="fl">Type</label><select class="fs" id="pj-type"><option>Internship</option><option>Full-time</option><option>Part-time</option><option>Co-op</option></select></div>
+    </div>
+    <div class="fg2">
+      <div class="fg"><label class="fl">Location *</label><input class="fi" id="pj-loc" placeholder="City or Remote"></div>
+      <div class="fg"><label class="fl">Deadline *</label><input class="fi" id="pj-dl" type="date"></div>
+    </div>
+    <div class="fg"><label class="fl">Description *</label><textarea class="ft" id="pj-desc" rows="3" placeholder="Role description…"></textarea></div>
+    <div class="fg"><label class="fl">Skills (comma separated)</label><input class="fi" id="pj-skills" placeholder="Python, SQL, Excel"></div>
+    <div class="mft"><button class="btn bsm" onclick="closeM('m-post-job')">Cancel</button><button class="btn bp bsm" onclick="adminPostJob()">✅ Post Job</button></div>
+  </div>
+</div>
+
+<!-- REVIEW APPLICANT -->
+<div class="ov" id="m-review">
+  <div class="mo">
+    <div class="mh"><div class="mt">👤 Review Applicant</div><button class="mc" onclick="closeM('m-review')">✕</button></div>
+    <div id="m-review-info"></div>
+    <input type="hidden" id="m-review-aid">
+    <div class="fg" style="margin-top:14px"><label class="fl">Update Status</label>
+      <select class="fs" id="m-review-status">
+        <option value="under_review">Under Review</option><option value="interviewing">Interviewing</option>
+        <option value="offer_sent">Offer Sent</option><option value="declined">Declined</option><option value="hired">Hired</option>
+      </select>
+    </div>
+    <div class="fg"><label class="fl">Notes (Internal)</label><textarea class="ft" id="m-review-notes" rows="3" placeholder="Notes about this applicant…"></textarea></div>
+    <div class="mft"><button class="btn bsm" onclick="closeM('m-review')">Close</button><button class="btn bp bsm" onclick="saveReview()">💾 Update</button></div>
+  </div>
+</div>
+
+<!-- FORGOT PASSWORD -->
+<div class="ov" id="m-forgot">
+  <div class="mo mo-sm">
+    <div class="mh"><div class="mt">🔑 Reset Password</div><button class="mc" onclick="closeM('m-forgot')">✕</button></div>
+    <p style="font-size:13px;color:var(--t2);margin-bottom:16px;line-height:1.5">Enter your CUNY email and we'll send a reset link.</p>
+    <div class="fg"><label class="fl">Email Address</label><input class="fi" id="fp-email" type="email" placeholder="yourname@cuny.edu"></div>
+    <div class="mft"><button class="btn bsm" onclick="closeM('m-forgot')">Cancel</button><button class="btn bp bsm" onclick="sendReset()">Send Reset Link</button></div>
+  </div>
+</div>
+
+<script>
+// ════════════════════════════════════════════════
+//  CONFIG & STATE
+// ════════════════════════════════════════════════
+const API = 'http://localhost:5050';
+const S = {
+  user: null,
+  role: 'student',
+  companies: [],
+  jobs: [],
+  applications: [],
+  students: [],
+  documents: { resume: [], docs: [] },
+  pendingApplyJobId: null,
+  pendingUploadCtx: null,
+  pendingUploadFile: null,
+  dbOnline: false
+};
+
+// ════════════════════════════════════════════════
+//  DB / API HELPERS
+// ════════════════════════════════════════════════
+async function api(method, path, body) {
+  try {
+    const opts = { method, headers: {'Content-Type':'application/json'} };
+    if (body) opts.body = JSON.stringify(body);
+    const r = await fetch(API + path, opts);
+    return await r.json();
+  } catch (e) {
+    return null;
+  }
+}
+
+async function checkDB() {
+  const r = await api('GET', '/api/health');
+  S.dbOnline = !!(r && r.status === 'ok');
+  const el = document.getElementById('db-status');
+  if (S.dbOnline) {
+    el.className = 'db-on'; el.textContent = '🟢 DB Connected';
+    el.classList.remove('hidden');
+    setTimeout(() => el.classList.add('hidden'), 4000);
+  } else {
+    el.className = 'db-off'; el.textContent = '🟡 DB Offline (demo mode)';
+    el.classList.remove('hidden');
+  }
+  return S.dbOnline;
+}
+
+// ════════════════════════════════════════════════
+//  TOAST
+// ════════════════════════════════════════════════
+function toast(msg, type='i', icon='') {
+  const cls = {s:'ts', e:'te', i:'ti'}[type] || 'ti';
+  const el = document.createElement('div');
+  el.className = `toast ${cls}`;
+  el.innerHTML = (icon?`<span>${icon}</span>`:'')+`<span>${msg}</span>`;
+  document.getElementById('toasts').appendChild(el);
+  setTimeout(() => { el.style.animation='none'; el.style.opacity='0'; setTimeout(()=>el.remove(),300); }, 3200);
+}
+
+// ════════════════════════════════════════════════
+//  CONFIRM
+// ════════════════════════════════════════════════
+let confCb = null;
+function confirm2(title, msg, icon, okLbl, okCls, cb) {
+  document.getElementById('conf-icon').textContent = icon||'⚠️';
+  document.getElementById('conf-title').textContent = title;
+  document.getElementById('conf-msg').textContent = msg;
+  const btn = document.getElementById('conf-ok');
+  btn.textContent = okLbl||'Confirm';
+  btn.className = `btn bsm ${okCls||'bp'}`;
+  confCb = cb;
+  document.getElementById('conf-ov').classList.add('show');
+}
+function confYes() { document.getElementById('conf-ov').classList.remove('show'); if(confCb) confCb(); confCb=null; }
+function confNo()  { document.getElementById('conf-ov').classList.remove('show'); confCb=null; }
+
+// ════════════════════════════════════════════════
+//  MODALS
+// ════════════════════════════════════════════════
+function openM(id) { document.getElementById(id).classList.add('show'); }
+function closeM(id) { document.getElementById(id).classList.remove('show'); }
+document.addEventListener('click', e => {
+  if (e.target.classList.contains('ov')) closeM(e.target.id);
+});
+
+// ════════════════════════════════════════════════
+//  AUTH SCREEN
+// ════════════════════════════════════════════════
+let lRole='student', rRole='student';
+
+function switchATab(tab) {
+  document.getElementById('atab-login').classList.toggle('active', tab==='login');
+  document.getElementById('atab-reg').classList.toggle('active', tab==='register');
+  document.getElementById('panel-login').classList.toggle('hidden', tab!=='login');
+  document.getElementById('panel-reg').classList.toggle('hidden', tab!=='register');
+}
+function setLR(r) { lRole=r; ['student','admin','company'].forEach(x=>document.getElementById('lr-'+x).classList.toggle('sel',x===r)); }
+function setRR(r) {
+  rRole=r;
+  ['student','admin','company'].forEach(x=>document.getElementById('rr-'+x).classList.toggle('sel',x===r));
+  document.getElementById('r-student-f').classList.toggle('hidden', r!=='student');
+  document.getElementById('r-company-f').classList.toggle('hidden', r!=='company');
+}
+function chkPW(v) {
+  let s=0; if(v.length>=8)s++; if(/[A-Z]/.test(v))s++; if(/[0-9]/.test(v))s++; if(/[^A-Za-z0-9]/.test(v))s++;
+  const bar=document.getElementById('ps-bar'), lbl=document.getElementById('ps-lbl');
+  bar.className='ps-bar ps'+s;
+  lbl.textContent=v.length?['','Weak','Fair','Good','Strong'][s]:'';
+}
+
+async function ssoLogin() {
+  const el=document.getElementById('sso-load'); el.classList.add('show');
+  const msgs=[['Connecting to CUNYfirst…','Verifying credentials'],['Authenticating via SAML 2.0…','Secure session'],['Syncing enrollment data…','Loading profile'],['Almost ready…','Preparing dashboard']];
+  let i=0;
+  const iv=setInterval(()=>{
+    if(i<msgs.length){ document.getElementById('sso-msg').textContent=msgs[i][0]; document.getElementById('sso-sub').textContent=msgs[i][1]; i++; }
+    else { clearInterval(iv); el.classList.remove('show');
+      S.user={id:1,first_name:'Alex',last_name:'Johnson',role:'student',college:'City College (CCNY)',major:'Computer Science',year:'Junior'};
+      S.ssoLogin=true;
+      launchApp('student');
+    }
+  }, 800);
+}
+
+async function doLogin() {
+  const email=document.getElementById('l-email').value.trim();
+  const pass=document.getElementById('l-pass').value;
+  if(!email){toast('Please enter your email.','e','❌');return;}
+  if(!pass){toast('Please enter your password.','e','❌');return;}
+  const dbOk = await checkDB();
+  if(dbOk){
+    const r = await api('POST','/api/auth/login',{email,password:pass});
+    if(r&&r.success){ S.user=r.user; launchApp(r.user.role); }
+    else toast(r?.error||'Invalid credentials.','e','❌');
+  } else {
+    // offline demo fallback
+    const demos={
+      'alex@ccny.cuny.edu':{id:1,first_name:'Alex',last_name:'Johnson',role:'student',college:'City College (CCNY)',major:'Computer Science',year:'Junior'},
+      'admin@careerconnect.cuny.edu':{id:2,first_name:'Maria',last_name:'Torres',role:'admin'},
+      'recruiting@microsoft.com':{id:3,first_name:'HR',last_name:'Microsoft',role:'company',company_name:'Microsoft'},
+    };
+    const u=demos[email];
+    if(u && pass==='password123'||pass==='admin123'||pass==='corp123'){
+      S.user=u; launchApp(u.role||lRole);
+    } else toast('Invalid credentials. Try demo logins.','e','❌');
+  }
+}
+
+async function doRegister() {
+  const fn=document.getElementById('r-fn').value.trim();
+  const ln=document.getElementById('r-ln').value.trim();
+  const email=document.getElementById('r-email').value.trim();
+  const pass=document.getElementById('r-pass').value;
+  const pass2=document.getElementById('r-pass2').value;
+  if(!fn||!ln){toast('Enter your full name.','e','❌');return;}
+  if(!email){toast('Enter your email.','e','❌');return;}
+  if(pass.length<8){toast('Password must be at least 8 characters.','e','❌');return;}
+  if(pass!==pass2){toast('Passwords do not match.','e','❌');return;}
+  if(rRole==='student'&&!document.getElementById('r-sid').value.trim()){toast('Enter your CUNY Student ID.','e','❌');return;}
+  if(rRole==='company'&&!document.getElementById('r-coname').value.trim()){toast('Enter your company name.','e','❌');return;}
+  const body={email,password:pass,role:rRole,first_name:fn,last_name:ln,
+    college:rRole==='student'?document.getElementById('r-college').value:'',
+    major:rRole==='student'?document.getElementById('r-major').value:'',
+    year:rRole==='student'?document.getElementById('r-year').value:'',
+    student_id:rRole==='student'?document.getElementById('r-sid').value:'',
+    company_name:rRole==='company'?document.getElementById('r-coname').value:'',
+    industry:rRole==='company'?document.getElementById('r-industry').value:''};
+  const dbOk=await checkDB();
+  if(dbOk){
+    const r=await api('POST','/api/auth/register',body);
+    if(r&&r.success){ S.user=r.user; toast(`Welcome, ${fn}!`,'s','🎉'); setTimeout(()=>launchApp(rRole),500); }
+    else toast(r?.error||'Registration failed.','e','❌');
+  } else {
+    S.user={id:Date.now(),first_name:fn,last_name:ln,role:rRole,...body};
+    toast(`Account created! (offline demo)`,'s','🎉');
+    setTimeout(()=>launchApp(rRole),500);
+  }
+}
+
+function doLogout() {
+  confirm2('Sign out?','You will return to the login screen.','👋','Sign out','bdng',()=>{
+    document.getElementById('main-app').classList.add('hidden');
+    document.getElementById('auth-screen').style.display='flex';
+    S.user=null;
+  });
+}
+
+function sendReset() {
+  const e=document.getElementById('fp-email').value.trim();
+  if(!e){toast('Enter your email.','e','❌');return;}
+  closeM('m-forgot'); toast(`Reset link sent to ${e}`,'s','📧');
+}
+
+// ════════════════════════════════════════════════
+//  LAUNCH APP
+// ════════════════════════════════════════════════
+async function launchApp(role) {
+  S.role=role;
+  document.getElementById('auth-screen').style.display='none';
+  document.getElementById('main-app').classList.remove('hidden');
+  const u=S.user||{};
+  const fullName=`${u.first_name||'User'} ${u.last_name||''}`.trim();
+  const initials=((u.first_name||'U')[0]+(u.last_name||'U')[0]).toUpperCase();
+  const roleLabel={student:`Student · ${u.college||'CUNY'}`,admin:'Career Office Admin',company:`Employer · ${u.company_name||''}`}[role]||role;
+  document.getElementById('tb-name').textContent=fullName;
+  document.getElementById('tb-init').textContent=initials;
+  document.getElementById('tb-role').textContent=roleLabel;
+  document.getElementById('sso-lbl').textContent=S.ssoLogin?'CUNYfirst SSO ✓':'Signed in';
+  setView(role);
+  document.querySelectorAll('.drb').forEach(b=>b.classList.remove('active'));
+  document.getElementById('dr-'+role).classList.add('active');
+  await checkDB();
+  await loadAll(role);
+}
+
+function setView(role){
+  ['student','admin','company'].forEach(r=>document.getElementById('view-'+r).classList.toggle('hidden',r!==role));
+}
+
+// ════════════════════════════════════════════════
+//  TAB SWITCHING — FIXED (no more disappearing)
+// ════════════════════════════════════════════════
+function swTab(btn, viewGroup) {
+  const targetId = btn.dataset.view;
+  // find the direct children of the view container that are tab panels
+  const container = document.getElementById('view-'+viewGroup);
+  // hide siblings that share the same prefix as targetId's prefix
+  const prefix = targetId.split('-')[0]+'-'; // e.g. "sv-" or "av-" or "cv-"
+  container.querySelectorAll(`[id^="${prefix}"]`).forEach(el => el.classList.add('hidden'));
+  document.getElementById(targetId).classList.remove('hidden');
+  btn.closest('.ntabs').querySelectorAll('.nb').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+function gotoTab(targetId, viewGroup) {
+  const container = document.getElementById('view-'+viewGroup);
+  const prefix = targetId.split('-')[0]+'-';
+  container.querySelectorAll(`[id^="${prefix}"]`).forEach(el => el.classList.add('hidden'));
+  document.getElementById(targetId).classList.remove('hidden');
+  const tabs = container.querySelectorAll('.nb');
+  tabs.forEach(b => b.classList.toggle('active', b.dataset.view===targetId));
+}
+
+function demoSwitch(role, el) {
+  document.querySelectorAll('.drb').forEach(b=>b.classList.remove('active'));
+  el.classList.add('active');
+  S.role=role;
+  const map={student:{name:'Alex Johnson',init:'AJ',role:'Student · CCNY'},admin:{name:'Dr. Maria Torres',init:'MT',role:'Career Office Admin'},company:{name:'Hiring — Microsoft',init:'MS',role:'Approved Employer'}};
+  const d=map[role];
+  document.getElementById('tb-name').textContent=d.name;
+  document.getElementById('tb-init').textContent=d.init;
+  document.getElementById('tb-role').textContent=d.role;
+  setView(role);
+  loadAll(role);
+}
+
+// ════════════════════════════════════════════════
+//  DATA LOADING
+// ════════════════════════════════════════════════
+async function loadAll(role) {
+  if (role==='student') {
+    await Promise.all([loadJobs(), loadMyApps(), loadMyDocs()]);
+    renderStudentProfile();
+  } else if (role==='admin') {
+    await Promise.all([loadCompanies(), loadJobs(), loadStudents(), loadStats()]);
+    renderAdmin();
+  } else if (role==='company') {
+    await Promise.all([loadJobs(), loadAllApps()]);
+    renderCompany();
+  }
+}
+
+async function loadCompanies() {
+  const r=await api('GET','/api/companies');
+  S.companies=r||fallbackCompanies();
+}
+async function loadJobs() {
+  const r=await api('GET','/api/jobs');
+  S.jobs=r||fallbackJobs();
+}
+async function loadMyApps() {
+  const uid=S.user?.id||1;
+  const r=await api('GET',`/api/applications?user_id=${uid}`);
+  S.applications=r||fallbackApps();
+}
+async function loadAllApps() {
+  const r=await api('GET','/api/applications');
+  S.applications=r||fallbackApps();
+}
+async function loadMyDocs() {
+  const uid=S.user?.id||1;
+  const r=await api('GET',`/api/documents?user_id=${uid}`);
+  if(r){
+    S.documents.resume=r.filter(d=>d.doc_type==='resume');
+    S.documents.docs=r.filter(d=>d.doc_type!=='resume');
+  } else {
+    S.documents.resume=[{id:1,filename:'Alex_Johnson_Resume_2025.pdf',file_size:'142 KB',doc_type:'resume',uploaded_at:'2025-03-12'}];
+    S.documents.docs=[
+      {id:2,filename:'Cover_Letter_Microsoft.docx',file_size:'48 KB',doc_type:'cover_letter',uploaded_at:'2025-03-14'},
+      {id:3,filename:'Transcript_Spring2025.pdf',file_size:'210 KB',doc_type:'transcript',uploaded_at:'2025-01-05'},
+    ];
+  }
+}
+async function loadStudents() {
+  const r=await api('GET','/api/students');
+  S.students=r||fallbackStudents();
+}
+async function loadStats() {
+  const r=await api('GET','/api/stats');
+  if(r){
+    document.getElementById('a-st-students').textContent=r.students||'—';
+    document.getElementById('a-st-cos').textContent=r.approved_companies||'—';
+    document.getElementById('a-st-jobs').textContent=r.open_jobs||'—';
+    document.getElementById('a-st-apps').textContent=r.applications||'—';
+  }
+}
+
+// ════════════════════════════════════════════════
+//  FALLBACK DATA (offline / demo mode)
+// ════════════════════════════════════════════════
+function fallbackCompanies(){return[
+  {id:1,name:'Microsoft',industry:'Software',hq:'Seattle, WA',status:'approved',job_count:12},
+  {id:2,name:'Google',industry:'Technology',hq:'Mountain View, CA',status:'approved',job_count:9},
+  {id:3,name:'Amazon',industry:'E-Commerce',hq:'Seattle, WA',status:'approved',job_count:7},
+  {id:4,name:'Stripe',industry:'Fintech',hq:'New York, NY',status:'approved',job_count:3},
+  {id:5,name:'Salesforce',industry:'Software',hq:'San Francisco, CA',status:'approved',job_count:5},
+  {id:6,name:'TechCorp Inc.',industry:'Software',hq:'New York, NY',status:'pending',job_count:0},
+  {id:7,name:'FinBank LLC',industry:'Finance',hq:'New York, NY',status:'pending',job_count:0},
+  {id:8,name:'GreenEnergy Co.',industry:'Energy',hq:'Newark, NJ',status:'pending',job_count:0},
+];}
+function fallbackJobs(){return[
+  {id:1,title:'Software Engineering Intern',company_name:'Microsoft',company_id:1,type:'Internship',location:'Seattle, WA · Hybrid',deadline:'Apr 30',status:'active',skills:'Python,React,Git',description:'Work with our engineering team on real products.'},
+  {id:2,title:'Data Analyst Intern',company_name:'Google',company_id:2,type:'Internship',location:'Remote',deadline:'May 15',status:'active',skills:'SQL,Python,Tableau',description:'Analyze data to drive product decisions.'},
+  {id:3,title:'UX Research Intern',company_name:'Salesforce',company_id:5,type:'Internship',location:'San Francisco, CA',deadline:'Apr 22',status:'closing',skills:'Figma,UX,Research',description:'Conduct user research for enterprise SaaS.'},
+  {id:4,title:'Cloud Operations Intern',company_name:'Amazon',company_id:3,type:'Internship',location:'Remote',deadline:'May 1',status:'active',skills:'AWS,Linux,Bash',description:'Support AWS infrastructure operations.'},
+  {id:5,title:'Product Management Intern',company_name:'Stripe',company_id:4,type:'Internship',location:'New York, NY',deadline:'May 10',status:'active',skills:'Product,SQL,Strategy',description:'Help define product roadmap for payments.'},
+];}
+function fallbackApps(){return[
+  {id:1,student_name:'Alex Johnson',student_id:1,job_id:1,job_title:'Software Engineering Intern',company_name:'Microsoft',applied_at:'2025-03-14',status:'under_review'},
+  {id:2,student_name:'Alex Johnson',student_id:1,job_id:2,job_title:'Data Analyst Intern',company_name:'Google',applied_at:'2025-03-10',status:'interviewing'},
+  {id:3,student_name:'Alex Johnson',student_id:1,job_id:5,job_title:'Product Intern',company_name:'Stripe',applied_at:'2025-02-28',status:'offer'},
+  {id:4,student_name:'Marcus Rivera',student_id:3,job_id:1,job_title:'Software Engineering Intern',company_name:'Microsoft',applied_at:'2025-03-12',status:'under_review'},
+  {id:5,student_name:'Priya Patel',student_id:4,job_id:4,job_title:'Cloud Ops Intern',company_name:'Amazon',applied_at:'2025-03-10',status:'offer_sent'},
+  {id:6,student_name:'Sarah Lee',student_id:2,job_id:2,job_title:'Data Analyst Intern',company_name:'Google',applied_at:'2025-03-09',status:'declined'},
+];}
+function fallbackStudents(){return[
+  {id:1,first_name:'Alex',last_name:'Johnson',major:'Computer Science',year:'Junior'},
+  {id:2,first_name:'Sarah',last_name:'Lee',major:'Business Admin',year:'Senior'},
+  {id:3,first_name:'Marcus',last_name:'Rivera',major:'Data Science',year:'Junior'},
+  {id:4,first_name:'Priya',last_name:'Patel',major:'Finance',year:'Sophomore'},
+];}
+
+// ════════════════════════════════════════════════
+//  BADGE / COLOR HELPERS
+// ════════════════════════════════════════════════
+const CO_COLORS=[['#E6F1FB','#185FA5'],['#EAF3DE','#3B6D11'],['#EEEDFE','#534AB7'],['#FAEEDA','#854F0B'],['#fde8e8','#c0392b'],['#e8f4fd','#1a6fa5']];
+function coColor(id){return CO_COLORS[(id-1)%CO_COLORS.length]||CO_COLORS[0];}
+function coInitials(name){return(name||'?').split(' ').map(w=>w[0]).join('').toUpperCase().substring(0,2);}
+function fmtDate(d){if(!d)return'—';try{return new Date(d).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});}catch{return d;}}
+
+function bStatus(status){
+  const m={active:['bg','Active'],closing:['ba','Closing Soon'],closed:['bgr','Closed'],pending:['ba','Pending'],
+    under_review:['ba','Under Review'],interviewing:['bb','Interviewing'],offer:['bg','Offer Received'],
+    offer_sent:['bg','Offer Sent'],declined:['bgr','Declined'],hired:['bg','Hired'],approved:['bg','Approved']};
+  const [cls,lbl]=m[status]||['bgr',status];
+  return `<span class="badge ${cls}">${lbl}</span>`;
+}
+
+function skillTags(skills){
+  return (skills||'').split(',').filter(Boolean).map(s=>`<span class="badge bgr">${s.trim()}</span>`).join('');
+}
+
+function coLogoHTML(name,id){
+  const [bg,col]=coColor(id);
+  return `<div class="clo" style="background:${bg};color:${col}">${coInitials(name)}</div>`;
+}
+
+// ════════════════════════════════════════════════
+//  STUDENT RENDERS
+// ════════════════════════════════════════════════
+function renderStudentProfile(){
+  const myApps=S.applications.filter(a=>a.student_id===(S.user?.id||1));
+  document.getElementById('s-app-ct').textContent=myApps.length;
+  document.getElementById('s-rs').textContent=S.documents.resume.length?'78%':'30%';
+
+  // recommended jobs (top 2)
+  const el=document.getElementById('s-rec-jobs');
+  const pct=[98,91];
+  el.innerHTML=S.jobs.slice(0,2).map((j,i)=>{
+    const applied=S.applications.some(a=>a.job_id===j.id&&a.student_id===(S.user?.id||1));
+    return `<div class="jc" style="border:none;padding:10px 0;${i===0?'border-bottom:.5px solid var(--brd)':''}">
+      ${coLogoHTML(j.company_name,j.company_id||j.cid||1)}
+      <div style="flex:1"><div class="jt">${j.title}</div><div class="jco">${j.company_name} · ${j.location}</div>
+      <div class="jtags"><span class="badge bg">${pct[i]}% match</span><span class="badge bb">${j.type}</span></div></div>
+      ${applied?`<span class="badge bg">✓ Applied</span>`:`<button class="btn bp bsm" onclick="openApply(${j.id})">Apply</button>`}
+    </div>`;
+  }).join('');
+
+  renderJobsList();
+  renderApps();
+  renderResumeDocs();
+}
+
+function renderJobsList(q=''){
+  const el=document.getElementById('s-jobs-list');
+  const filt=q?S.jobs.filter(j=>(j.title+j.company_name+(j.skills||'')).toLowerCase().includes(q.toLowerCase())):S.jobs;
+  if(!filt.length){el.innerHTML='<p style="text-align:center;padding:30px;color:var(--t3)">No jobs found.</p>';return;}
+  el.innerHTML=filt.map(j=>{
+    const applied=S.applications.some(a=>a.job_id===j.id&&a.student_id===(S.user?.id||1));
+    return `<div class="jc">${coLogoHTML(j.company_name,j.company_id||j.cid||1)}
+      <div style="flex:1"><div class="jt">${j.title}</div><div class="jco">${j.company_name} · ${j.location}</div>
+      <div class="jtags"><span class="badge bb">${j.type}</span>${skillTags(j.skills)}</div></div>
+      <div class="jact">
+        ${applied?`<span class="badge bg">✓ Applied</span>`:`<button class="btn bp bsm" onclick="openApply(${j.id})">Apply</button>`}
+        <div class="ddl">Closes ${j.deadline||'—'}</div>
+      </div></div>`;
+  }).join('');
+}
+
+function filterJobs(q=''){renderJobsList(q);}
+
+function renderApps(){
+  const el=document.getElementById('s-apps-list');
+  const my=S.applications.filter(a=>a.student_id===(S.user?.id||1));
+  el.innerHTML=my.map(a=>`
+    <div class="tr" style="grid-template-columns:2fr 1.5fr 0.8fr 1fr 80px">
+      <span style="font-weight:600">${a.job_title||a.position||'—'}</span>
+      <span style="color:var(--t2)">${a.company_name||a.company||'—'}</span>
+      <span style="color:var(--t2)">${fmtDate(a.applied_at)}</span>
+      <span>${bStatus(a.status)}</span>
+      <span><button class="btn bsm" onclick="openReview(${a.id})">View</button></span>
+    </div>`).join('');
+}
+
+function renderResumeDocs(){
+  // resume
+  const rel=document.getElementById('s-resume-list');
+  rel.innerHTML=S.documents.resume.map((f,i)=>`
+    <div class="fi-item">
+      <div class="fi-ic">PDF</div>
+      <div style="flex:1"><div style="font-size:13px;font-weight:500">${f.filename}</div>
+      <div style="font-size:10px;color:var(--t3)">Uploaded ${fmtDate(f.uploaded_at)} · ${f.file_size||'—'}</div></div>
+      <span class="badge bg">Active</span>
+      <button class="btn bgh bxs" style="margin-left:6px" onclick="removeDoc('resume',${f.id||i})">🗑</button>
+    </div>`).join('');
+
+  // other docs
+  const del=document.getElementById('s-doc-list');
+  const docs=S.documents.docs;
+  document.getElementById('s-doc-empty').style.display=docs.length?'none':'block';
+  const typeColors={cover_letter:['#EAF3DE','#3B6D11'],transcript:['#FAEEDA','#854F0B'],portfolio:['#E6F1FB','#185FA5'],other:['#e8e4dc','#6b6760']};
+  del.innerHTML=docs.map((f,i)=>{
+    const ext=f.filename.split('.').pop().toUpperCase()||'FILE';
+    const [bg,col]=(typeColors[f.doc_type]||typeColors.other);
+    return `<div class="fi-item">
+      <div class="fi-ic" style="background:${bg};color:${col}">${ext}</div>
+      <div style="flex:1"><div style="font-size:13px;font-weight:500">${f.filename}</div>
+      <div style="font-size:10px;color:var(--t3)">Uploaded ${fmtDate(f.uploaded_at)} · ${f.file_size||'—'}</div></div>
+      <span class="badge ${f.doc_type==='cover_letter'?'bb':f.doc_type==='transcript'?'ba':'bgr'}">${(f.doc_type||'').replace('_',' ')}</span>
+      <button class="btn bgh bxs" style="margin-left:6px" onclick="removeDoc('doc',${f.id||i})">🗑</button>
+    </div>`;
+  }).join('');
+}
+
+// ════════════════════════════════════════════════
+//  ADMIN RENDERS
+// ════════════════════════════════════════════════
+function renderAdmin(){
+  loadStats();
+  // pending
+  const pending=S.companies.filter(c=>c.status==='pending');
+  const pel=document.getElementById('a-pending');
+  if(!pending.length){pel.innerHTML='<p style="text-align:center;padding:18px;color:var(--t3);font-size:13px">No pending approvals.</p>';}
+  else{
+    pel.innerHTML=`<div class="tbox" style="margin:0"><div class="th" style="grid-template-columns:2fr 1.2fr 0.8fr 1fr 120px">
+      <span>Company</span><span>Industry</span><span>HQ</span><span>Status</span><span>Actions</span></div>
+      ${pending.map(c=>`<div class="tr" style="grid-template-columns:2fr 1.2fr 0.8fr 1fr 120px">
+        <span style="font-weight:600">${c.name}</span><span style="color:var(--t2)">${c.industry||'—'}</span>
+        <span style="color:var(--t2)">${c.hq||'—'}</span><span>${bStatus('pending')}</span>
+        <span style="display:flex;gap:4px">
+          <button class="btn bp bxs" onclick="approveCompany(${c.id})">✓ Approve</button>
+          <button class="btn bdng bxs" onclick="rejectCompany(${c.id})">✕ Reject</button>
+        </span>
+      </div>`).join('')}</div>`;
+  }
+  renderAdminCosList();
+  renderAdminJobsList();
+  renderAdminStudentsList();
+}
+
+function renderAdminCosList(q=''){
+  const el=document.getElementById('a-cos-list');
+  const list=q?S.companies.filter(c=>c.name.toLowerCase().includes(q.toLowerCase())):S.companies;
+  el.innerHTML=list.map(c=>`
+    <div class="tr" style="grid-template-columns:2fr 1.2fr 0.8fr 0.8fr 130px">
+      <span style="font-weight:600">${c.name}</span><span style="color:var(--t2)">${c.industry||'—'}</span>
+      <span>${c.job_count||0}</span><span>${bStatus(c.status)}</span>
+      <span style="display:flex;gap:4px">
+        ${c.status==='pending'?`<button class="btn bp bxs" onclick="approveCompany(${c.id})">Approve</button>`:`<button class="btn bxs" onclick="editCoAdmin(${c.id})">Edit</button>`}
+        <button class="btn bdng bxs" onclick="removeCompany(${c.id})">Remove</button>
+      </span>
+    </div>`).join('');
+}
+
+function renderAdminJobsList(q=''){
+  const el=document.getElementById('a-jobs-list');
+  const list=q?S.jobs.filter(j=>j.title.toLowerCase().includes(q.toLowerCase())):S.jobs;
+  el.innerHTML=list.map(j=>`
+    <div class="tr" style="grid-template-columns:2fr 1.2fr 0.8fr 0.8fr 120px">
+      <span style="font-weight:600">${j.title}</span><span style="color:var(--t2)">${j.company_name||'—'}</span>
+      <span style="color:var(--t2)">${j.deadline||'—'}</span><span>${bStatus(j.status)}</span>
+      <span style="display:flex;gap:4px">
+        <button class="btn bxs" onclick="openEditJob(${j.id})">✏️ Edit</button>
+        <button class="btn bdng bxs" onclick="deleteJob(${j.id})">🗑</button>
+      </span>
+    </div>`).join('');
+}
+
+function renderAdminStudentsList(){
+  const el=document.getElementById('a-students-list');
+  el.innerHTML=S.students.map(s=>`
+    <div class="tr" style="grid-template-columns:2fr 1.5fr 0.8fr 0.6fr 70px">
+      <span style="font-weight:600">${s.first_name} ${s.last_name}</span>
+      <span style="color:var(--t2)">${s.major||'—'}</span><span>${s.year||'—'}</span>
+      <span>${S.applications.filter(a=>a.student_id===s.id).length}</span>
+      <span><button class="btn bsm">View</button></span>
+    </div>`).join('');
+}
+
+function filterAdminCos(q){renderAdminCosList(q);}
+function filterAdminJobs(q){renderAdminJobsList(q);}
+
+// ════════════════════════════════════════════════
+//  COMPANY RENDERS
+// ════════════════════════════════════════════════
+function renderCompany(){
+  document.getElementById('co-st-post').textContent=S.jobs.length;
+  document.getElementById('co-st-apps').textContent=S.applications.length;
+  renderCoApps();
+  renderCoRecent();
+}
+
+function renderCoApps(){
+  const el=document.getElementById('co-apps-list');
+  el.innerHTML=S.applications.map(a=>`
+    <div class="tr" style="grid-template-columns:2fr 1.5fr 0.8fr 1fr 90px">
+      <span style="font-weight:600">${a.student_name||'—'}</span>
+      <span>${a.job_title||a.position||'—'}</span>
+      <span style="color:var(--t2)">${fmtDate(a.applied_at)}</span>
+      <span>${bStatus(a.status)}</span>
+      <span><button class="btn bsm" onclick="openReview(${a.id})">Review</button></span>
+    </div>`).join('');
+}
+
+function renderCoRecent(){
+  const el=document.getElementById('co-recent');
+  const recent=S.applications.slice(0,4);
+  el.innerHTML=recent.map(a=>{
+    const init=(a.student_name||'?').split(' ').map(w=>w[0]).join('').toUpperCase().substring(0,2);
+    return `<div class="jc" style="border:none;padding:10px 0;border-bottom:.5px solid var(--brd)">
+      <div class="av" style="width:36px;height:36px;font-size:12px;flex-shrink:0">${init}</div>
+      <div style="flex:1"><div style="font-weight:600;font-size:13px">${a.student_name||'—'}</div>
+      <div style="font-size:12px;color:var(--t2)">${a.job_title||'—'} · ${a.company_name||'—'}</div></div>
+      ${bStatus(a.status)}
+      <button class="btn bsm" style="margin-left:8px" onclick="openReview(${a.id})">Review</button>
+    </div>`;
+  }).join('');
+}
+
+// ════════════════════════════════════════════════
+//  APPLY FOR JOB
+// ════════════════════════════════════════════════
+function openApply(jid){
+  const job=S.jobs.find(j=>j.id===jid);
+  if(!job)return;
+  const uid=S.user?.id||1;
+  if(S.applications.some(a=>a.job_id===jid&&a.student_id===uid)){toast('You already applied for this position.','i','ℹ️');return;}
+  S.pendingApplyJobId=jid;
+  const [bg,col]=coColor(job.company_id||1);
+  document.getElementById('m-apply-info').innerHTML=`
+    <div style="display:flex;align-items:center;gap:10px;padding:14px;background:var(--bg2);border-radius:var(--r1);margin-bottom:14px">
+      <div class="clo" style="background:${bg};color:${col}">${coInitials(job.company_name)}</div>
+      <div><div style="font-weight:700;font-size:15px">${job.title}</div>
+      <div style="font-size:12px;color:var(--t2)">${job.company_name} · ${job.location} · ${job.type}</div></div>
+    </div>`;
+  const hasResume=S.documents.resume.length>0;
+  document.getElementById('m-apply-chk').innerHTML=`
+    <div class="achk">${hasResume?'✅':'❌'}<div style="flex:1"><div style="font-weight:600;font-size:13px">Resume ${hasResume?'attached':'missing'}</div>
+      <div style="font-size:11px;color:var(--t2)">${hasResume?S.documents.resume[0].filename:'Upload a resume before applying'}</div></div>
+      ${!hasResume?`<button class="btn bp bxs" onclick="closeM('m-apply');gotoTab('sv-resume','student')">Upload →</button>`:''}
+    </div>
+    <div class="achk">✅<div><div style="font-weight:600;font-size:13px">Profile complete</div><div style="font-size:11px;color:var(--t2)">${S.user?.first_name||'Alex'} ${S.user?.last_name||'Johnson'} · ${S.user?.college||'CCNY'}</div></div></div>`;
+  document.getElementById('m-apply-cl').value='';
+  openM('m-apply');
+}
+
+async function confirmApply(){
+  if(!S.pendingApplyJobId)return;
+  if(!S.documents.resume.length){toast('Upload a resume first.','e','❌');return;}
+  const job=S.jobs.find(j=>j.id===S.pendingApplyJobId);
+  const uid=S.user?.id||1;
+  const name=`${S.user?.first_name||'Alex'} ${S.user?.last_name||'Johnson'}`;
+  const r=await api('POST','/api/applications',{student_name:name,student_id:uid,job_id:S.pendingApplyJobId});
+  const newApp={id:r?.application_id||Date.now(),student_name:name,student_id:uid,job_id:S.pendingApplyJobId,
+    job_title:job.title,company_name:job.company_name,applied_at:new Date().toISOString(),status:'under_review'};
+  S.applications.unshift(newApp);
+  S.pendingApplyJobId=null;
+  closeM('m-apply');
+  renderStudentProfile();
+  toast(`Applied for ${job.title} at ${job.company_name}!`,'s','🎉');
+}
+
+// ════════════════════════════════════════════════
+//  FILE UPLOAD
+// ════════════════════════════════════════════════
+function dov(e){e.preventDefault();e.currentTarget.classList.add('ov');}
+function dlv(e){e.currentTarget.classList.remove('ov');}
+function ddf(e,ctx){e.preventDefault();e.currentTarget.classList.remove('ov');const f=e.dataTransfer.files[0];if(f)procFile(f,ctx);}
+
+function handleUp(e,ctx){ const f=e.target.files[0]; if(f)procFile(f,ctx); }
+
+function procFile(file,ctx){
+  if(file.size>5*1024*1024){toast('File too large. Max 5 MB.','e','❌');return;}
+  const ok=/\.(pdf|docx?|png|jpe?g)$/i.test(file.name);
+  if(!ok){toast('Invalid file type. Use PDF, DOCX, PNG or JPG.','e','❌');return;}
+  if(ctx==='resume'){
+    const entry={id:Date.now(),filename:file.name,file_size:fmtSize(file.size),doc_type:'resume',uploaded_at:new Date().toISOString()};
+    S.documents.resume=[entry];
+    renderResumeDocs();
+    if(S.dbOnline&&S.user){api('POST','/api/documents',{user_id:S.user.id,filename:file.name,doc_type:'resume',file_size:fmtSize(file.size)});}
+    toast('Resume uploaded!','s','📄');
+  } else {
+    S.pendingUploadFile={filename:file.name,file_size:fmtSize(file.size),raw:file};
+    document.getElementById('m-up-fname').textContent=file.name;
+    document.getElementById('m-up-fsize').textContent=fmtSize(file.size);
+    document.getElementById('m-up-icon').textContent=file.name.split('.').pop().toUpperCase().substring(0,3)||'FILE';
+    document.getElementById('m-up-preview').classList.remove('hidden');
+    openM('m-upload');
+  }
+}
+
+function handleMUpload(e){ const f=e.target.files[0]; if(f)procFile(f,'doc'); }
+function clearMUpload(){
+  S.pendingUploadFile=null;
+  document.getElementById('m-up-preview').classList.add('hidden');
+  document.getElementById('m-up-inp').value='';
+}
+
+async function finalizeUpload(){
+  if(!S.pendingUploadFile){toast('Select a file first.','e','❌');return;}
+  const docType=document.getElementById('m-up-type').value;
+  const entry={id:Date.now(),filename:S.pendingUploadFile.filename,file_size:S.pendingUploadFile.file_size,doc_type:docType,uploaded_at:new Date().toISOString()};
+  S.documents.docs.push(entry);
+  if(S.dbOnline&&S.user){await api('POST','/api/documents',{user_id:S.user.id,filename:entry.filename,doc_type:docType,file_size:entry.file_size});}
+  S.pendingUploadFile=null;
+  closeM('m-upload');
+  renderResumeDocs();
+  toast('Document uploaded!','s','📁');
+}
+
+async function removeDoc(type,id){
+  confirm2('Remove file?','This will delete the uploaded document.','🗑','Remove','bdng',async()=>{
+    if(type==='resume') S.documents.resume=S.documents.resume.filter(f=>(f.id||0)!==id&&f!==id);
+    else S.documents.docs=S.documents.docs.filter(f=>(f.id||0)!==id);
+    if(S.dbOnline) await api('DELETE',`/api/documents/${id}`);
+    renderResumeDocs();
+    toast('File removed.','i','🗑');
+  });
+}
+
+function fmtSize(b){if(b<1024)return b+'B';if(b<1024*1024)return Math.round(b/1024)+'KB';return(b/1024/1024).toFixed(1)+'MB';}
+
+// ════════════════════════════════════════════════
+//  EDIT STUDENT PROFILE
+// ════════════════════════════════════════════════
+async function saveProfile(){
+  const fn=document.getElementById('ep-fn').value.trim();
+  const ln=document.getElementById('ep-ln').value.trim();
+  if(!fn||!ln){toast('Name cannot be empty.','e','❌');return;}
+  const skills=document.getElementById('ep-skills').value;
+  const full=`${fn} ${ln}`;
+  document.getElementById('s-name').textContent=full;
+  document.getElementById('s-av').textContent=(fn[0]+ln[0]).toUpperCase();
+  document.getElementById('tb-name').textContent=full;
+  document.getElementById('tb-init').textContent=(fn[0]+ln[0]).toUpperCase();
+  document.getElementById('s-tags').innerHTML=skills.split(',').map(s=>s.trim()).filter(Boolean).map(s=>`<span class="tag tagb">${s}</span>`).join('');
+  if(S.dbOnline&&S.user) await api('PUT',`/api/users/${S.user.id}`,{first_name:fn,last_name:ln,major:document.getElementById('ep-major').value,college:document.getElementById('ep-college').value});
+  closeM('m-edit-profile');
+  toast('Profile updated!','s','✅');
+}
+
+// ════════════════════════════════════════════════
+//  ADMIN: COMPANIES
+// ════════════════════════════════════════════════
+async function approveCompany(id){
+  const c=S.companies.find(x=>x.id===id);
+  if(!c)return;
+  confirm2(`Approve ${c.name}?`,'This company can now post jobs.','✅','Approve','bp',async()=>{
+    if(S.dbOnline) await api('PUT',`/api/companies/${id}`,{status:'approved'});
+    c.status='approved';
+    renderAdmin();
+    toast(`${c.name} approved!`,'s','✅');
+  });
+}
+
+async function rejectCompany(id){
+  const c=S.companies.find(x=>x.id===id);
+  if(!c)return;
+  confirm2(`Reject ${c.name}?`,'This company will be denied access.','❌','Reject','bdng',async()=>{
+    if(S.dbOnline) await api('DELETE',`/api/companies/${id}`);
+    S.companies=S.companies.filter(x=>x.id!==id);
+    renderAdmin();
+    toast(`${c.name} rejected.`,'e','❌');
+  });
+}
+
+async function removeCompany(id){
+  const c=S.companies.find(x=>x.id===id);
+  if(!c)return;
+  confirm2(`Remove ${c.name}?`,'This removes the company and all their postings.','⚠️','Remove','bdng',async()=>{
+    if(S.dbOnline){ await api('DELETE',`/api/companies/${id}`); }
+    S.companies=S.companies.filter(x=>x.id!==id);
+    S.jobs=S.jobs.filter(j=>(j.company_id||j.cid)!==id);
+    renderAdmin(); renderJobsList();
+    toast(`${c.name} removed.`,'e','🗑');
+  });
+}
+
+function editCoAdmin(id){ toast('Company editing coming soon.','i','✏️'); }
+
+async function addCompany(){
+  const name=document.getElementById('ac-name').value.trim();
+  const industry=document.getElementById('ac-ind').value;
+  const hq=document.getElementById('ac-hq').value.trim();
+  const cname=document.getElementById('ac-cname').value.trim();
+  const cemail=document.getElementById('ac-cemail').value.trim();
+  const status=document.getElementById('ac-status').value;
+  if(!name){toast('Company name is required.','e','❌');return;}
+  if(!cname||!cemail){toast('Contact info is required.','e','❌');return;}
+  const body={name,industry,hq,website:document.getElementById('ac-web').value,about:document.getElementById('ac-about').value,contact_name:cname,contact_email:cemail,status};
+  let newCo={id:Date.now(),job_count:0,...body};
+  if(S.dbOnline){
+    const r=await api('POST','/api/companies',body);
+    if(r?.success) newCo=r.company;
+  }
+  S.companies.push(newCo);
+  closeM('m-add-co');
+  ['ac-name','ac-hq','ac-web','ac-about','ac-cname','ac-cemail'].forEach(id=>document.getElementById(id).value='');
+  renderAdmin();
+  toast(`${name} added!`,'s','🏢');
+}
+
+// ════════════════════════════════════════════════
+//  ADMIN: JOBS
+// ════════════════════════════════════════════════
+function openPostJobAdmin(){
+  const sel=document.getElementById('pj-co');
+  sel.innerHTML=S.companies.filter(c=>c.status==='approved').map(c=>`<option value="${c.id}">${c.name}</option>`).join('');
+  openM('m-post-job');
+}
+
+async function adminPostJob(){
+  const coid=parseInt(document.getElementById('pj-co').value);
+  const title=document.getElementById('pj-title').value.trim();
+  const type=document.getElementById('pj-type').value;
+  const loc=document.getElementById('pj-loc').value.trim();
+  const dl=document.getElementById('pj-dl').value;
+  const desc=document.getElementById('pj-desc').value.trim();
+  const skills=document.getElementById('pj-skills').value.trim();
+  if(!title||!loc||!dl){toast('Fill in all required fields.','e','❌');return;}
+  const co=S.companies.find(c=>c.id===coid);
+  const dlFmt=dl?new Date(dl).toLocaleDateString('en-US',{month:'short',day:'numeric'}):dl;
+  const body={title,company_id:coid,type,location:loc,deadline:dlFmt,description:desc,skills,status:'active',openings:1};
+  let newJob={id:Date.now(),company_name:co?.name||'',company_id:coid,...body};
+  if(S.dbOnline){const r=await api('POST','/api/jobs',body);if(r?.success)newJob=r.job;}
+  S.jobs.unshift(newJob);
+  if(co) co.job_count=(co.job_count||0)+1;
+  closeM('m-post-job');
+  ['pj-title','pj-loc','pj-desc','pj-skills','pj-dl'].forEach(id=>document.getElementById(id).value='');
+  renderAdmin(); renderJobsList();
+  toast(`"${title}" posted!`,'s','📋');
+}
+
+function openEditJob(id){
+  const j=S.jobs.find(x=>x.id===id);
+  if(!j)return;
+  document.getElementById('ej-id').value=id;
+  document.getElementById('ej-title').value=j.title||'';
+  document.getElementById('ej-co').value=j.company_name||'';
+  document.getElementById('ej-type').value=j.type||'Internship';
+  document.getElementById('ej-loc').value=j.location||'';
+  document.getElementById('ej-dl').value=j.deadline||'';
+  document.getElementById('ej-desc').value=j.description||j.desc||'';
+  document.getElementById('ej-skills').value=j.skills||'';
+  document.getElementById('ej-status').value=j.status||'active';
+  openM('m-edit-job');
+}
+
+async function saveJobEdit(){
+  const id=parseInt(document.getElementById('ej-id').value);
+  const j=S.jobs.find(x=>x.id===id);
+  if(!j)return;
+  const body={title:document.getElementById('ej-title').value.trim()||j.title,type:document.getElementById('ej-type').value,
+    location:document.getElementById('ej-loc').value.trim()||j.location,deadline:document.getElementById('ej-dl').value||j.deadline,
+    description:document.getElementById('ej-desc').value,skills:document.getElementById('ej-skills').value,status:document.getElementById('ej-status').value};
+  Object.assign(j,body);
+  if(S.dbOnline) await api('PUT',`/api/jobs/${id}`,body);
+  closeM('m-edit-job');
+  renderAdmin(); renderJobsList();
+  toast(`"${j.title}" updated!`,'s','✅');
+}
+
+async function deleteJob(id){
+  const j=S.jobs.find(x=>x.id==id);
+  if(!j)return;
+  confirm2(`Delete "${j.title}"?`,'This posting will be permanently removed.','🗑','Delete','bdng',async()=>{
+    if(S.dbOnline) await api('DELETE',`/api/jobs/${id}`);
+    S.jobs=S.jobs.filter(x=>x.id!=id);
+    closeM('m-edit-job');
+    renderAdmin(); renderJobsList();
+    toast('Job posting deleted.','e','🗑');
+  });
+}
+
+// ════════════════════════════════════════════════
+//  COMPANY: POST JOB
+// ════════════════════════════════════════════════
+async function submitCoJob(){
+  const title=document.getElementById('cj-title').value.trim();
+  const type=document.getElementById('cj-type').value;
+  const loc=document.getElementById('cj-loc').value.trim();
+  const desc=document.getElementById('cj-desc').value.trim();
+  const dl=document.getElementById('cj-dl').value;
+  if(!title){toast('Job title is required.','e','❌');return;}
+  if(!loc){toast('Location is required.','e','❌');return;}
+  if(!desc){toast('Description is required.','e','❌');return;}
+  if(!dl){toast('Deadline is required.','e','❌');return;}
+  confirm2(`Submit "${title}"?`,'This will go to the Career Office for approval before going live.','📤','Submit','bp',async()=>{
+    const coid=1; // current company (Microsoft in demo)
+    const skills=document.getElementById('cj-skills').value;
+    const dlFmt=new Date(dl).toLocaleDateString('en-US',{month:'short',day:'numeric'});
+    const body={title,company_id:coid,type,location:loc,deadline:dlFmt,salary:document.getElementById('cj-sal').value,
+      description:desc,requirements:document.getElementById('cj-req').value,skills,status:'pending',openings:parseInt(document.getElementById('cj-open').value)||1};
+    let newJob={id:Date.now(),company_name:'Microsoft',company_id:coid,...body};
+    if(S.dbOnline){const r=await api('POST','/api/jobs',body);if(r?.success)newJob=r.job;}
+    S.jobs.unshift(newJob);
+    clearCoJobForm();
+    renderCompany(); renderAdmin();
+    toast('Job submitted for approval!','s','📤');
+  });
+}
+
+function clearCoJobForm(){
+  ['cj-title','cj-loc','cj-sal','cj-desc','cj-req','cj-skills','cj-dl'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('cj-open').value='1';
+}
+
+// ════════════════════════════════════════════════
+//  COMPANY PROFILE SAVE
+// ════════════════════════════════════════════════
+async function saveCoProfile(){
+  const name=document.getElementById('cp-name').value.trim();
+  const hq=document.getElementById('cp-hq').value.trim();
+  const ind=document.getElementById('cp-ind').value;
+  document.getElementById('co-name').textContent=name;
+  document.getElementById('co-meta').textContent=`${ind} · ${hq} · Approved recruiter`;
+  document.getElementById('co-av').textContent=coInitials(name);
+  if(S.dbOnline&&S.user) await api('PUT',`/api/companies/1`,{name,industry:ind,hq,website:document.getElementById('cp-web').value,about:document.getElementById('cp-about').value,contact_email:document.getElementById('cp-email').value});
+  toast('Company profile saved!','s','✅');
+}
+
+// ════════════════════════════════════════════════
+//  REVIEW APPLICANT
+// ════════════════════════════════════════════════
+function openReview(id){
+  const a=S.applications.find(x=>x.id===id);
+  if(!a)return;
+  document.getElementById('m-review-aid').value=id;
+  document.getElementById('m-review-info').innerHTML=`
+    <div style="padding:14px;background:var(--bg2);border-radius:var(--r1)">
+      <div style="font-weight:700;font-size:15px;margin-bottom:3px">${a.student_name||'—'}</div>
+      <div style="font-size:12px;color:var(--t2);margin-bottom:10px">Applied for: <strong>${a.job_title||a.position||'—'}</strong> at ${a.company_name||'—'}</div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <span class="badge bgr">📅 Applied ${fmtDate(a.applied_at)}</span>${bStatus(a.status)}
+      </div>
+    </div>`;
+  document.getElementById('m-review-status').value=a.status||'under_review';
+  document.getElementById('m-review-notes').value=a.notes||'';
+  openM('m-review');
+}
+
+async function saveReview(){
+  const id=parseInt(document.getElementById('m-review-aid').value);
+  const a=S.applications.find(x=>x.id===id);
+  if(!a)return;
+  const newStatus=document.getElementById('m-review-status').value;
+  const notes=document.getElementById('m-review-notes').value;
+  a.status=newStatus; a.notes=notes;
+  if(S.dbOnline) await api('PUT',`/api/applications/${id}`,{status:newStatus,notes});
+  closeM('m-review');
+  // re-render whichever view is active
+  if(S.role==='student') renderApps();
+  else if(S.role==='company'){renderCoApps();renderCoRecent();}
+  else renderAdmin();
+  toast('Status updated!','s','✅');
+}
+
+// ════════════════════════════════════════════════
+//  INIT
+// ════════════════════════════════════════════════
+window.addEventListener('load',()=>{
+  checkDB();
+});
+</script>
+</body>
+</html>
